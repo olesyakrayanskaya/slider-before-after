@@ -1,0 +1,96 @@
+:root {
+    --value: 50%;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    white-space: nowrap;
+    -webkit-clip-path: inset(100%);
+    clip-path: inset(100%);
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 1940px;
+    padding: 0 20px;
+}
+
+.slider {
+    width: 400px;
+    aspect-ratio: 1/1;
+    position: relative;
+    overflow: hidden;
+}
+
+.slider__img {
+    position: absolute;
+    top: 0;
+    max-width: none;
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+}
+
+.slider__img_before {
+    left: 0;
+    width: var(--value);
+    -o-object-position: left;
+    object-position: left;
+}
+
+.slider__img_after {
+    right: 0;
+    width: calc(100% - var(--value));
+    -o-object-position: right;
+    object-position: right;
+}
+
+.slider__range-visible {
+    position: absolute;
+    top: 0;
+    left: var(--value);
+    width: 4px;
+    height: 100%;
+    background-color: #878383;
+    transform: translateX(-50%);
+    pointer-events: none;
+}
+
+.slider__range-visible::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 50px;
+    height: 50px;
+    background-color: #878383;
+    background-image: url(./images/comparision.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.slider__range-js {
+    position: absolute;
+    margin: 0;
+    cursor: pointer;
+    opacity: 0;
+    inset: 0;
+}
